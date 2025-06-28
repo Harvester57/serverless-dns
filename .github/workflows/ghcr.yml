@@ -13,6 +13,9 @@ env:
   GIT_REF: ${{ github.event.inputs.git-ref || github.ref }}
 
 # docs.github.com/en/actions/publishing-packages/publishing-docker-images
+permissions:
+  contents: read
+
 jobs:
   nodejs:
     name: 🚀 Node on Alpine
@@ -24,8 +27,13 @@ jobs:
         id-token: write
 
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@002fdce3c6a235733a90a27c80493a3241e56863 # v2.12.1
+        with:
+          egress-policy: audit
+
       - name: 🚚 Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           ref: ${{ env.GIT_REF }}
           fetch-depth: 0
@@ -54,7 +62,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: 📕 Attest
-        uses: actions/attest-build-provenance@v1
+        uses: actions/attest-build-provenance@ef244123eb79f2f7a7e75d99086184180e6d0018 # v1.4.4
         with:
           subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           subject-digest: ${{ steps.push.outputs.digest }}
@@ -70,8 +78,13 @@ jobs:
         id-token: write
 
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@002fdce3c6a235733a90a27c80493a3241e56863 # v2.12.1
+        with:
+          egress-policy: audit
+
       - name: 🚚 Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           ref: ${{ env.GIT_REF }}
           fetch-depth: 0
@@ -100,7 +113,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: 📕 Attest
-        uses: actions/attest-build-provenance@v1
+        uses: actions/attest-build-provenance@ef244123eb79f2f7a7e75d99086184180e6d0018 # v1.4.4
         with:
           subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BUN }}
           subject-digest: ${{ steps.push.outputs.digest }}
