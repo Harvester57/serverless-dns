@@ -53,8 +53,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@6c439dc8bdf85cadbbce9ed30d1c7b959517bc49 # v2.12.2
+        with:
+          egress-policy: audit
+
       - name: 🍌 Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           ref: ${{ env.GIT_REF }}
           fetch-depth: 0
@@ -70,7 +75,7 @@ jobs:
       # docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs-or-python
       - name: 🐎 Setup Node @v22
         if: env.JS_RUNTIME == 'node'
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: ${{ env.NODE_VER }}
 
@@ -84,7 +89,7 @@ jobs:
       # deno.com/blog/deploy-static-files#example-a-statically-generated-site
       - name: 🦕 Setup Deno @2.x
         if: env.JS_RUNTIME == 'deno'
-        uses: denoland/setup-deno@main
+        uses: denoland/setup-deno@2f7698fd116bfedbd1c3cd4119337b5a787ef53a # main
         with:
           deno-version: ${{ env.DENO_VER }}
 
@@ -97,7 +102,7 @@ jobs:
       # bun.sh/docs/cli/install#ci-cd
       - name: 🐇 Setup Bun @ latest
         if: env.JS_RUNTIME == 'bun'
-        uses: oven-sh/setup-bun@v2
+        uses: step-security/setup-bun@a961ff54612b97ac3259f517fb6a81be3b657a59 # v2.0.2
         with:
           bun-version: latest
 
