@@ -107,6 +107,9 @@ jobs:
           WENV: 'prod'
           COMMIT_SHA: ${{ github.sha }}
 
+      - name: Generate package-lock file
+        run: npm i --package-lock-only
+
       - name: Use Node.js 24
         uses: actions/setup-node@v4
         with:
