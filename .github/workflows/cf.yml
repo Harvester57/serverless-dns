@@ -110,10 +110,10 @@ jobs:
       - name: Generate package-lock file
         run: npm i --package-lock-only
 
-      - name: Use Node.js 24
+      - name: Use Node.js 22
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 22
           cache: "npm"
 
         # npm (and node16) are installed by wrangler-action in a pre-job setup
