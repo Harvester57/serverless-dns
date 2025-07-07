@@ -1,38 +1,33 @@
 version: 2
 updates:
-- package-ecosystem: "npm" # See documentation for possible values
-  directory: "/" # Location of package manifests
+- package-ecosystem: "npm"
+  directory: "/"
+  commit-message:
+    prefix: "npm"
+  labels: [ 'chore' ]
   schedule:
-    # Check for updates to GitHub Actions every weekday
     interval: "cron"
-    cronjob: "0 18 * * *"
-    timezone: "Europe/Paris"
+    cronjob: "0 7 * * *"
   groups:
-    # Specify a name for the group, which will be used in pull request titles
-    # and branch names
-    npm-dependencies:
-      # Define patterns to include dependencies in the group (based on
-      # dependency name)
-      applies-to: version-updates # Applies the group rule to version updates
-      patterns:
-      - "*"
-        # A wildcard that matches all dependencies in the package
-        # ecosystem. Note: using "*" may open a large pull request
+    npm-prod-dependencies:
+      applies-to: version-updates
+      dependency-type: "production"
+    npm-dev-dependencies:
+      dependency-type: "development"
+      applies-to: version-updates
 - package-ecosystem: "github-actions"
   directory: "/"
+  commit-message:
+    prefix: "actions"
+  labels: [ 'chore' ]
+  reviewers:
+  - "Harvester57"
   schedule:
-    # Check for updates to GitHub Actions every weekday
     interval: "cron"
-    cronjob: "0 18 * * *"
+    cronjob: "0 7 * * *"
     timezone: "Europe/Paris"
   groups:
-    # Specify a name for the group, which will be used in pull request titles
-    # and branch names
     actions-dependencies:
-      # Define patterns to include dependencies in the group (based on
-      # dependency name)
-      applies-to: version-updates # Applies the group rule to version updates
+      applies-to: version-updates
       patterns:
       - "*"
-        # A wildcard that matches all dependencies in the package
-        # ecosystem. Note: using "*" may open a large pull request
