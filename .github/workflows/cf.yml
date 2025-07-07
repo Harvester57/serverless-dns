@@ -107,6 +107,12 @@ jobs:
           WENV: 'prod'
           COMMIT_SHA: ${{ github.sha }}
 
+      - name: Use Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: "npm"
+
         # npm (and node16) are installed by wrangler-action in a pre-job setup
       - name: 🏗 Get dependencies
         run: npm i
