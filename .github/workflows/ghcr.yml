@@ -39,7 +39,7 @@ jobs:
           fetch-depth: 0
 
       - name: 🔐 Login
-        uses: docker/login-action@3d100841f68d4548bf57e52eb27bd33ec5069f55
+        uses: docker/login-action@ef38ec311a7df3f01475313e7c5bb584b74b112a
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
@@ -47,7 +47,7 @@ jobs:
 
       - name: 🏷️ Metadata
         id: meta
-        uses: docker/metadata-action@de1119515dcfb4b110f21f67dc739b3ba1472a84
+        uses: docker/metadata-action@c1e51972afc2121e065aed6d45c65596fe445f3f
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
@@ -90,7 +90,7 @@ jobs:
           fetch-depth: 0
 
       - name: 🔐 Login
-        uses: docker/login-action@3d100841f68d4548bf57e52eb27bd33ec5069f55
+        uses: docker/login-action@ef38ec311a7df3f01475313e7c5bb584b74b112a
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
@@ -98,7 +98,7 @@ jobs:
 
       - name: 🏷️ Metadata
         id: meta
-        uses: docker/metadata-action@de1119515dcfb4b110f21f67dc739b3ba1472a84
+        uses: docker/metadata-action@c1e51972afc2121e065aed6d45c65596fe445f3f
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BUN }}
 
