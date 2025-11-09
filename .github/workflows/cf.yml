@@ -108,17 +108,17 @@ jobs:
           COMMIT_SHA: ${{ github.sha }}
 
       - name: Generate package-lock file
-        run: npm i --package-lock-only
+        run: npm ci --package-lock-only
 
-      - name: Use Node.js 22
+      - name: Use Node.js 24
         uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6.0.0
         with:
-          node-version: 22
+          node-version: 24
           cache: "npm"
 
         # npm (and node16) are installed by wrangler-action in a pre-job setup
       - name: 🏗 Get dependencies
-        run: npm i
+        run: npm ci
 
       - name: 📚 Wrangler publish
         # github.com/cloudflare/wrangler-action
