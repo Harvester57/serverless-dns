@@ -94,7 +94,7 @@ jobs:
           git merge origin/${BUILD_BRANCH} || :
 
       - name: 🦕 Install Deno@2.x
-        uses: denoland/setup-deno@bac1f7276ce08dba2dadbc204ad8385615bf7bdb # main
+        uses: denoland/setup-deno@bdaa2e4f849cbc8d7b46337cf37db0dc9b321074 # main
         with:
           deno-version: 2.x
 
