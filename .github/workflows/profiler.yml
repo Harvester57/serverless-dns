@@ -89,7 +89,7 @@ jobs:
       # deno.com/blog/deploy-static-files#example-a-statically-generated-site
       - name: 🦕 Setup Deno @2.x
         if: env.JS_RUNTIME == 'deno'
-        uses: denoland/setup-deno@bac1f7276ce08dba2dadbc204ad8385615bf7bdb # main
+        uses: denoland/setup-deno@bdaa2e4f849cbc8d7b46337cf37db0dc9b321074 # main
         with:
           deno-version: ${{ env.DENO_VER }}
 
