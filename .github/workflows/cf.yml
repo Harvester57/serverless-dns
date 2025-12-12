@@ -52,7 +52,7 @@ on:
 
 env:
   GIT_REF: ${{ github.event.inputs.commit || github.ref }}
-  WRANGLER_VER: '4.46.0'
+  WRANGLER_VER: '4.54.0' # https://github.com/cloudflare/workers-sdk/releases
   # default is 'dev' which is really empty/no env
   WORKERS_ENV: ''
 
@@ -110,10 +110,10 @@ jobs:
       - name: Generate package-lock file
         run: npm i --package-lock-only
 
-      - name: Use Node.js 22
+      - name: Use Node.js 24
         uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f # v6.1.0
         with:
-          node-version: 22
+          node-version: 24
           cache: "npm"
 
         # npm (and node16) are installed by wrangler-action in a pre-job setup
