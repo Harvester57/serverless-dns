@@ -67,7 +67,7 @@ jobs:
       contents: read
     steps:
       - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@fa2e9d605c4eeb9fcad4c99c224cee0c6c7f3594 # v2.16.0
+        uses: step-security/harden-runner@fe104658747b27e96e4f7e80cd0a94068e53901d # v2.16.1
         with:
           egress-policy: audit
 
@@ -94,7 +94,7 @@ jobs:
           git merge origin/${BUILD_BRANCH} || :
 
       - name: 🦕 Install Deno@2.x
-        uses: denoland/setup-deno@6a293fc1a20bd1d541577761b3169054c853c099 # main
+        uses: denoland/setup-deno@ff4860f9d7236f320afa0f82b7e6457384805d05 # main
         with:
           deno-version: 2.x
 
