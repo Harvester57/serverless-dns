@@ -42,7 +42,7 @@
     "@fastly/js-compute": "^3.34.0"
   },
   "devDependencies": {
-    "@types/node": "^25.0.0",
+    "@types/node": "^26.0.1",
     "buffer": "^6.0.3",
     "clinic": "^13.0.0",
     "eslint": "^10.0.0",
@@ -51,7 +51,7 @@
     "husky": "^9.1.7",
     "lint-staged": "^17.0.7",
     "node-loader": "^2.0.0",
-    "prettier": "3.8.3",
+    "prettier": "3.9.1",
     "webpack": "^5.92.1",
     "webpack-cli": "^7.0.0",
     "why-is-node-running": "^3.2.0",
