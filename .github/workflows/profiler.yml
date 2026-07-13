@@ -54,7 +54,7 @@ jobs:
 
     steps:
       - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
         with:
           egress-policy: audit
 
@@ -89,7 +89,7 @@ jobs:
       # deno.com/blog/deploy-static-files#example-a-statically-generated-site
       - name: 🦕 Setup Deno @2.x
         if: env.JS_RUNTIME == 'deno'
-        uses: denoland/setup-deno@28c677f5df3d8f072e45566ed931347ae6325d53 # main
+        uses: denoland/setup-deno@22d081ff2d3a40755e97629de92e3bcbfa7cf2ed # main
         with:
           deno-version: ${{ env.DENO_VER }}
 
